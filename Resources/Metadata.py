@@ -24,20 +24,20 @@ def UTCBin():
     return str(format(recoverbinstamp, '64b')).replace(" ", "0") #Outputs time as binary
 
 def getID():
-    settings = open("Resources/Settings.json", 'r')#Opens JSON file
+    settings = open("Settings.json", 'r')#Opens JSON file
     settingsJSON = json.load(settings) #Imports JSON data
     ID = settingsJSON["ID"][0]["IDbin"] #Looks for ID
     settings.close()#Closes JSON
     return ID 
 
 def getAllContacts():
-    contacts = open("Resources/Contacts.json", 'r') #Opens JSON
+    contacts = open("Contacts.json", 'r') #Opens JSON
     contactsJSON = json.load(contacts) #Imports JSON
     contacts.close() #Closes JSON
     return contactsJSON["Contacts"] #Returns all Contacts
 
 def getContact(Name, IDType):
-    contacts = open("Resources/Contacts.json", 'r') #opens JSON
+    contacts = open("Contacts.json", 'r') #opens JSON
     contactsJSON = json.load(contacts) #Imports JSON
     x=0
     for i in contactsJSON["Contacts"]:

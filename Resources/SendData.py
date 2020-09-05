@@ -18,6 +18,7 @@ def DataCondense(Receiver, message, dataMode):
     for i in data:
         data[x] = int(data[x])
         x=x+1
+        i=i
     dataWParity = ecc.encode(data)
     data = str(dataWParity)
     dataOut = dataStart + data + dataEnd
