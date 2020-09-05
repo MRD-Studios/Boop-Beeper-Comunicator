@@ -10,6 +10,3 @@ def errorChecker(bits):
     if (np.count_nonzero(bits == 1) % 2) == 0:
         return "No known 1 bit Error (a 2+ bit error may stil occur)"
     else: return "Error in transfer, Data may be wrong"
-randomData = np.random.randint(0, 2, 2048)
-data = encode(randomData)
-print(errorChecker(data))
