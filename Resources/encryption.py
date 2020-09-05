@@ -4,7 +4,6 @@ def Encrypt(Receiver, Sender, Message):
     key = format(int(key, 2), '920b')
     Data = (str(Metadata.getContact(Receiver, "bin")) + str(Sender) + str(Message)).replace(" ", "0")
     Data = format(int(Data, 2), '920b')
-    print(len(Data))
     Encrypted = int(key, 2)^int(Data,2)
     Encrypted = format(Encrypted, '920b')
     return Encrypted

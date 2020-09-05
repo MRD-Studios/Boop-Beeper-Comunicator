@@ -1,16 +1,4 @@
 import numpy as np, json, time, struct, datetime, Message
-#A message contains 2048 bits of data
-#16 bit data Start code
-#1 error check
-#7 bit data mode
-#64 bit UTC
-#Hashed (reciever ID as key):
-# - 128 bit receiver ID
-# - 128 bit sender ID
-# - 664 message data
-#16 bit data end
-dataStart = format(61680, '16b') #sets dataStart Code
-dataEnd = format(65280, '16b') #sets dataEnd Code
 
 def dataMode(mode):
     dataOut=format(65, '7b') #Everyone In range Message
@@ -26,14 +14,14 @@ def dataMode(mode):
         dataOut=format(70, '7b') #Message Received, non hashed
     elif mode == 5:
         dataOut=format(71, '7b') #Message Received, 
-    return dataOut
+    return str(dataOut).replace(" ", "0")
 
 def UTCBin():
     now = datetime.datetime.now() #Gets The Time
     stamp = time.mktime(now.timetuple())
     binarydatetime = struct.pack('<L', int(stamp))
     recoverbinstamp = struct.unpack('<L', binarydatetime)[0]
-    return format(recoverbinstamp, '64b') #Outputs time as binary
+    return str(format(recoverbinstamp, '64b')).replace(" ", "0") #Outputs time as binary
 
 def getID():
     settings = open("Resources/Settings.json", 'r')#Opens JSON file
