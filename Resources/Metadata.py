@@ -1,13 +1,13 @@
-import numpy as np, json, time, struct, datetime
+import numpy as np, json, time, struct, datetime, Message
 #A message contains 2048 bits of data
 #16 bit data Start code
 #1 error check
 #7 bit data mode
 #64 bit UTC
 #Hashed (reciever ID as key):
-# - 128 bit sender ID
 # - 128 bit receiver ID
-# - 1688 message data
+# - 128 bit sender ID
+# - 664 message data
 #16 bit data end
 dataStart = format(61680, '16b') #sets dataStart Code
 dataEnd = format(65280, '16b') #sets dataEnd Code
@@ -48,20 +48,19 @@ def getAllContacts():
     contacts.close() #Closes JSON
     return contactsJSON["Contacts"] #Returns all Contacts
 
-def getContact(Name, IDType, get):
+def getContact(Name, IDType):
     contacts = open("Resources/Contacts.json", 'r') #opens JSON
     contactsJSON = json.load(contacts) #Imports JSON
     x=0
     for i in contactsJSON["Contacts"]:
         if contactsJSON["Contacts"][x]["Name"] == Name: #Looks For Name entered in json file
-            contactName = contactsJSON["Contacts"][x]["Name"] #Once found saves that entry
+            x=x
             break
-        x=x+1
+        else:
+            x=x+1
     if IDType == "ascii": contactID = contactsJSON["Contacts"][x]["IDascii"] #Returns Ascii ID
     elif IDType == "hex": contactID = contactsJSON["Contacts"][x]["IDhex"] #Returns Hex ID
     elif IDType == "bin": contactID = contactsJSON["Contacts"][x]["IDbin"] #Returns Binary ID
     else: contactID = contactsJSON["Contacts"][x]["IDascii"] #Returns Ascii ID
     contacts.close() #Closes JSON File
-    if get == "Name": return contactName #Returns Contact name if asked for
-    elif get == "ID": return contactID #Returns Contact ID if asked for
-    else: return contactID #Returns Contact ID if nothing asked for.
+    return contactID #Returns Contact ID.
