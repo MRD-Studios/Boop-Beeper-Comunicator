@@ -58,6 +58,7 @@ def getContact(Name, IDType):
             break
         else:
             x=x+1
+        i=i
     if IDType == "ascii": contactID = contactsJSON["Contacts"][x]["IDascii"] #Returns Ascii ID
     elif IDType == "hex": contactID = contactsJSON["Contacts"][x]["IDhex"] #Returns Hex ID
     elif IDType == "bin": contactID = contactsJSON["Contacts"][x]["IDbin"] #Returns Binary ID
