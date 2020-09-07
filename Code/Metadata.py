@@ -53,3 +53,9 @@ def getContact(Name, IDType):
     else: contactID = contactsJSON["Contacts"][x]["IDascii"] #Returns Ascii ID
     contacts.close() #Closes JSON File
     return contactID #Returns Contact ID.
+
+def uptime():
+    with open('/proc/uptime', 'r') as f:
+        uptime_seconds = float(f.readline().split()[0])
+        uptime_string = str(datetime.timedelta(seconds = uptime_seconds))
+    return uptime_string
