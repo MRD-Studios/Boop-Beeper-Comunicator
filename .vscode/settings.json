@@ -1,9 +1,0 @@
-{
-    "editor.fontFamily": "'Hack Nerd Font Mono'",
-    "python.testing.pytestArgs": [
-        "Code"
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.nosetestsEnabled": false,
-    "python.testing.pytestEnabled": true
-}
