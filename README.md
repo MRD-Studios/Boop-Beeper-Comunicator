@@ -1,2 +1,4 @@
 # Boop Beeper Comunicator
- A Raspberry Pi & Radio comunication. (The name is not final)
+A Pico Pi & LoRa communicator built on micropython. (The name is not final)
+
+##
